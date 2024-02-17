@@ -1,2 +1,20 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render partial: 'template1', locals: { user: @user, book: @book } %>
+
+<h2>Books</h2>
+<table>
+  <tbody>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+    <tr>
+      <% @books.each do |book| %>
+      <th><%= image_tag @user.get_profile_image(100,100) %></th>
+      <th><%= book.title %></th>
+      <th><%= book.body %></th>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
