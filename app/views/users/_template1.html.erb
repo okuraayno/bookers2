@@ -13,14 +13,9 @@
     </tr>
   </tbody>
 </table>
-<!--編集ページまだ-->
 <div>
-  <% if user == current_user %>
     <p><%= link_to "編集", edit_user_path(user) %></p>
-  <% end %>
 </div>  
-<!--編集ページ  -->
-
 <h2>New book</h2>
 <%= form_with model: book do |f| %>
   <h4>Title</h4>
