@@ -1,1 +1,19 @@
 <%= render partial: 'template1', locals: { user: @user, book: @book } %>
+
+<h2>Books</h2>
+<table>
+  <tbody>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+    <tr>
+      <% @books.each do |book| %>
+        <th><%= image_tag book.user.get_profile_image(100,100) %></th>
+        <th><%= link_to book_path(book.id) do %><%= book.title %><% end %></th>
+        <th><%= book.body %></th>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
