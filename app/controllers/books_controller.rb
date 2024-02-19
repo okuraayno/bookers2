@@ -25,7 +25,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @user = @books.user
   end
-  
+
   def edit
     is_matching_login_user
     @books = Book.find(params[:id])
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     books = Book.find(params[:id])
     books.destroy
@@ -50,7 +50,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
   def is_matching_login_user
     @books = Book.find(params[:id])
     unless @books.user_id == current_user.id

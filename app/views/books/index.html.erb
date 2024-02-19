@@ -7,22 +7,27 @@
   </ul>
 <% end %>
 
-<%= render partial: 'template1', locals: { user: @user, book: @book } %>
-
-<h2>Books</h2>
-<table>
-  <tbody>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-    <tr>
-      <% @books.each do |book| %>
-        <th><%= image_tag book.user.get_profile_image(100,100) %></th>
-        <th><%= link_to book_path(book.id) do %><%= book.title %><% end %></th>
-        <th><%= book.body %></th>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <%= render partial: 'template1', locals: { user: @user, book: @book } %>
+    <div class='col-md-8 offset-md-1'>
+      <h2>Books</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+          <tr>
+            <% @books.each do |book| %>
+              <th><%= image_tag book.user.get_profile_image(100,100) %></th>
+              <th><%= link_to book_path(book.id) do %><%= book.title %><% end %></th>
+              <th><%= book.body %></th>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

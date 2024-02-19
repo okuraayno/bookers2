@@ -4,21 +4,24 @@
 
 <%= render partial: 'template1', locals: { user: @user, book: @book } %>
 
-<h2>Books</h2>
+<h2>Book detail</h2>
 <table>
   <tbody>
     <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-    <tr>
-      <% @books.each do |book| %>
-      <th><%= image_tag @user.get_profile_image(100,100) %></th>
-      <th><%= link_to book_path(book.id) do %><%= book.title %><% end %></th>
-      <th><%= book.body %></th>
+      <th>
+        <%= link_to user_path(@books.user.id) do %>
+          <%= image_tag @books.user.get_profile_image(100,100) %>
+          <%= @books.user.name %>
+        <% end %>
+      </th>
+      <th><%= link_to book_path(@books.id) do %><%= @books.title %><% end %></th>
+      <th><%= @books.body %></th>
+    <div>
+      <% if @books.user == current_user %>
+      <th><%= link_to "edit", edit_book_path(@books.id) %></th>
+      <th><%= link_to "Destroy", book_path(@books.id), method: :delete %></th>
       <% end %>
+    </div> 
     </tr>
   </tbody>
 </table>
-
