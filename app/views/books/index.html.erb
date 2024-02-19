@@ -12,20 +12,23 @@
     <%= render partial: 'template1', locals: { user: @user, book: @book } %>
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
-      <table>
-        <tbody>
+      <table class="table table-hover table-inverse">
+        <thead>
           <tr>
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
+            <th colspan="3"></th>
           </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
           <tr>
-            <% @books.each do |book| %>
-              <th><%= image_tag book.user.get_profile_image(100,100) %></th>
-              <th><%= link_to book_path(book.id) do %><%= book.title %><% end %></th>
-              <th><%= book.body %></th>
-            <% end %>
+            <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+            <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
+            <td><%= book.body %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
