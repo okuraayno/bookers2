@@ -18,8 +18,8 @@
               <td><%= link_to book_path(@books.id) do %><%= @books.title %><% end %></td>
               <td><%= @books.body %></td>
               <% if @books.user == current_user %>
-              <td><%= link_to "edit", edit_book_path(@books.id) %></td>
-              <td><%= link_to "Destroy", book_path(@books.id), method: :delete %></td>
+              <td><a class="btn btn-sm btn-success "href="<%= edit_book_path(@books.id) %>">Edit</a></td>
+              <td><a data-confirm="本当に削除しますか？" class="btn btn-sm btn-danger" rel="nofollw" data-method="delete" href="<%= book_path(@books.id) %>">Destroy</a></td>
               <% end %>
             </tr>
           </tbody>
@@ -28,4 +28,3 @@
     </div>
   </div>
 </main>
-
