@@ -5,6 +5,14 @@
       <%= render partial: 'template1', locals: { user: @user, book: @book } %>
       <div class='col-md-8 offset-md-1'>
         <h2>Book detail</h2>
+        <% if @book_comment.errors.any? %>
+        <%= @book_comment.errors.count %>error prohibited this obj from being saved:
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+         </ul>
+        <% end %>
         <table class="table">
           <tbody>
             <tr>
